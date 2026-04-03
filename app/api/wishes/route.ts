@@ -1,14 +1,13 @@
+import { NextRequest, NextResponse } from "next/server"
 import { supabase } from "@/lib/supabase"
 
-// POST - Submit a wish
-export async function POST(req: Request) {
+export async function POST(request: NextRequest) {
   try {
-    const body = await req.json()
-
+    const body = await request.json()
     const { name, message } = body
 
     if (!name || !message) {
-      return Response.json(
+      return NextResponse.json(
         { error: "Name and message required" },
         { status: 400 }
       )
@@ -16,34 +15,16 @@ export async function POST(req: Request) {
 
     const { error } = await supabase
       .from("wishes")
-      .insert([
-        {
-          name,
-          message,
-        },
-      ])
+      .insert([{ name, message }])
 
     if (error) throw error
 
-    return Response.json({ success: true })
-  } catch (err) {
-    console.error(err)
-    return Response.json(
+    return NextResponse.json({ success: true })
+  } catch (error) {
+    console.error(error)
+    return NextResponse.json(
       { error: "Failed to submit wish" },
       { status: 500 }
     )
   }
-}
-
-// GET - Fetch wishes
-export async function GET() {
-  const { data, error } = await supabase
-    .from("wishes")
-    .select("*")
-    .order("created_at", { ascending: false })
-
-  if (error)
-    return Response.json({ error }, { status: 500 })
-
-  return Response.json(data)
 }

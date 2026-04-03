@@ -1,46 +1,27 @@
 import { NextRequest, NextResponse } from "next/server"
-import { ResultSetHeader, RowDataPacket } from "mysql2"
-import pool from "@/lib/db"
+import { supabase } from "@/lib/supabase"
 
-interface GalleryImage extends RowDataPacket {
-  id: number
-  image_url: string
-  caption: string | null
-  uploaded_by: string | null
-  is_approved: boolean
-  is_featured: boolean
-  created_at: Date
-}
-
-// Check if database is configured
-function isDatabaseConfigured() {
-  return !!(process.env.MYSQL_HOST && process.env.MYSQL_USER && process.env.MYSQL_DATABASE)
-}
-
-// GET - Fetch all approved gallery images
+// GET - Fetch approved gallery images
 export async function GET(request: NextRequest) {
-  // Return empty array if database not configured
-  if (!isDatabaseConfigured()) {
-    return NextResponse.json({ images: [], message: "Database not configured" })
-  }
-
   try {
     const { searchParams } = new URL(request.url)
     const featured = searchParams.get("featured")
 
-    let sql = `SELECT id, image_url, caption, uploaded_by, created_at 
-               FROM gallery_images 
-               WHERE is_approved = TRUE`
-    
+    let query = supabase
+      .from("gallery_images")
+      .select("*")
+      .eq("is_approved", true)
+      .order("created_at", { ascending: false })
+
     if (featured === "true") {
-      sql += ` AND is_featured = TRUE`
+      query = query.eq("is_featured", true)
     }
-    
-    sql += ` ORDER BY created_at DESC`
 
-    const [images] = await pool.execute<GalleryImage[]>(sql)
+    const { data, error } = await query
 
-    return NextResponse.json({ images })
+    if (error) throw error
+
+    return NextResponse.json({ images: data })
   } catch (error) {
     console.error("Error fetching gallery images:", error)
     return NextResponse.json(
@@ -50,21 +31,12 @@ export async function GET(request: NextRequest) {
   }
 }
 
-// POST - Upload a new gallery image
+// POST - Upload new gallery image
 export async function POST(request: NextRequest) {
-  // Return error if database not configured
-  if (!isDatabaseConfigured()) {
-    return NextResponse.json(
-      { error: "Database not configured. Please set up your MySQL connection." },
-      { status: 503 }
-    )
-  }
-
   try {
     const body = await request.json()
     const { imageUrl, caption, uploadedBy } = body
 
-    // Validation
     if (!imageUrl) {
       return NextResponse.json(
         { error: "Image URL is required" },
@@ -72,17 +44,25 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const [result] = await pool.execute<ResultSetHeader>(
-      `INSERT INTO gallery_images (image_url, caption, uploaded_by, is_approved) 
-       VALUES (?, ?, ?, TRUE)`,
-      [imageUrl, caption || null, uploadedBy || null]
-    )
+    const { data, error } = await supabase
+      .from("gallery_images")
+      .insert([
+        {
+          image_url: imageUrl,
+          caption: caption || null,
+          uploaded_by: uploadedBy || null,
+          is_approved: true,
+        },
+      ])
+      .select()
+
+    if (error) throw error
 
     return NextResponse.json(
-      { 
-        success: true, 
+      {
+        success: true,
         message: "Image uploaded successfully!",
-        id: result.insertId 
+        image: data[0],
       },
       { status: 201 }
     )
