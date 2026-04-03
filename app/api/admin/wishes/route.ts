@@ -1,25 +1,62 @@
 import { NextRequest, NextResponse } from "next/server"
-import { supabase } from "@/lib/supabase"
+import { supabase } from "@/lib/db"
 
-function verifyAuth(request: NextRequest) {
-  const authHeader = request.headers.get("authorization")
-  if (!authHeader?.startsWith("Bearer ")) return false
-  return authHeader.slice(7) === process.env.ADMIN_PASSWORD
+function isAuthorized(request: NextRequest) {
+  const auth = request.headers.get("authorization")
+  const token = auth?.replace("Bearer ", "")
+  return token === process.env.ADMIN_PASSWORD
 }
 
+// GET all wishes
 export async function GET(request: NextRequest) {
-  if (!verifyAuth(request)) {
+  if (!isAuthorized(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
   }
 
   const { data, error } = await supabase
-    .from("wishes")
+    .from("well_wishes")
     .select("*")
     .order("created_at", { ascending: false })
 
   if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 })
+    console.error(error)
+    return NextResponse.json(
+      { error: "Failed to fetch wishes" },
+      { status: 500 }
+    )
   }
 
-  return NextResponse.json({ wishes: data })
+  return NextResponse.json({ wishes: data || [] })
+}
+
+// DELETE wish
+export async function DELETE(request: NextRequest) {
+  if (!isAuthorized(request)) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+  }
+
+  const { searchParams } = new URL(request.url)
+  const id = searchParams.get("id")
+
+  if (!id) {
+    return NextResponse.json(
+      { error: "Missing ID" },
+      { status: 400 }
+    )
+  }
+
+  const { error } = await supabase
+    .from("well_wishes")
+    .delete()
+    .eq("id", id)
+
+  if (error) {
+    console.error(error)
+    return NextResponse.json(
+      { error: "Delete failed" },
+      { status: 500 }
+    )
+  }
+
+  return NextResponse.json({ success: true })
 }

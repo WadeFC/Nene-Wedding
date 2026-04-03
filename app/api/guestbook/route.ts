@@ -14,7 +14,7 @@ export async function POST(req: Request) {
     }
 
     const { error } = await supabase
-      .from("wishes")
+      .from("well_wishes")
       .insert([{ name, message }])
 
     if (error) throw error
@@ -32,7 +32,7 @@ export async function POST(req: Request) {
 // Fetch guestbook messages
 export async function GET() {
   const { data, error } = await supabase
-    .from("wishes")
+    .from("well_wishes")
     .select("*")
     .order("created_at", { ascending: false })
 
