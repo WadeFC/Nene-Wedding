@@ -1,10 +1,39 @@
-import { NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server"
+import { supabase } from "@/lib/supabase"
 
-// This route has been moved to /api/photos
-export async function GET() {
-  return NextResponse.json({ message: "Route moved to /api/photos" })
+function verifyAuth(request: NextRequest) {
+  const auth = request.headers.get("authorization")
+  return auth === `Bearer ${process.env.ADMIN_PASSWORD}`
 }
 
-export async function POST() {
-  return NextResponse.json({ message: "Route moved to /api/photos" })
+// GET gallery images
+export async function GET(request: NextRequest) {
+  if (!verifyAuth(request)) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+  }
+
+  const { data, error } = await supabase
+    .from("gallery_images")
+    .select("*")
+    .order("created_at", { ascending: false })
+
+  if (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 })
+  }
+
+  return NextResponse.json({ images: data })
+}
+
+// DELETE image
+export async function DELETE(request: NextRequest) {
+  if (!verifyAuth(request)) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+  }
+
+  const { searchParams } = new URL(request.url)
+  const id = searchParams.get("id")
+
+  await supabase.from("gallery_images").delete().eq("id", id)
+
+  return NextResponse.json({ success: true })
 }
