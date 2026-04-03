@@ -1,10 +1,29 @@
 import { NextRequest, NextResponse } from "next/server"
 import { supabase } from "@/lib/supabase"
 
+// GET wishes
+export async function GET() {
+  const { data, error } = await supabase
+    .from("well_wishes")
+    .select("*")
+    .order("created_at", { ascending: false })
+
+  if (error) {
+    console.error(error)
+    return NextResponse.json(
+      { error: "Failed to fetch wishes" },
+      { status: 500 }
+    )
+  }
+
+  return NextResponse.json({ wishes: data })
+}
+
+// POST new wish
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { name, message } = body
+    const { name, message, imageUrl } = body
 
     if (!name || !message) {
       return NextResponse.json(
@@ -13,15 +32,26 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const { error } = await supabase
-      .from("wishes")
-      .insert([{ name, message }])
+    const { error } = await supabase.from("well_wishes").insert([
+      {
+        name,
+        message,
+        image_url: imageUrl || null,
+        is_approved: true,
+      },
+    ])
 
-    if (error) throw error
+    if (error) {
+      console.error(error)
+      return NextResponse.json(
+        { error: "Database insert failed" },
+        { status: 500 }
+      )
+    }
 
     return NextResponse.json({ success: true })
-  } catch (error) {
-    console.error(error)
+  } catch (err) {
+    console.error(err)
     return NextResponse.json(
       { error: "Failed to submit wish" },
       { status: 500 }
