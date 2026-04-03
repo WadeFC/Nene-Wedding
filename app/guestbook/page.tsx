@@ -1,41 +1,66 @@
-import { NextRequest, NextResponse } from "next/server"
-import { supabase } from "@/lib/supabase"
+"use client"
 
-export async function POST(request: NextRequest) {
-  try {
-    const body = await request.json()
-    const { name, message } = body
+import { useState } from "react"
 
-    if (!name || !message) {
-      return NextResponse.json(
-        { error: "Name and message required" },
-        { status: 400 }
-      )
+export default function GuestbookPage() {
+  const [name, setName] = useState("")
+  const [message, setMessage] = useState("")
+  const [loading, setLoading] = useState(false)
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    setLoading(true)
+
+    const res = await fetch("/api/guestbook", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, message }),
+    })
+
+    const data = await res.json()
+
+    if (data.success) {
+      alert("Wish submitted ✅")
+      setName("")
+      setMessage("")
+    } else {
+      alert(data.error || "Failed to submit wish")
     }
 
-    const { error } = await supabase
-      .from("guestbook")
-      .insert([
-        {
-          name,
-          message,
-        },
-      ])
-
-    if (error) {
-      console.error(error)
-      return NextResponse.json(
-        { error: "Database insert failed" },
-        { status: 500 }
-      )
-    }
-
-    return NextResponse.json({ success: true })
-  } catch (err) {
-    console.error(err)
-    return NextResponse.json(
-      { error: "Server error" },
-      { status: 500 }
-    )
+    setLoading(false)
   }
+
+  return (
+    <main className="p-6">
+      <h1 className="text-2xl font-bold mb-4">Guestbook</h1>
+
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <input
+          placeholder="Your name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="border p-2 w-full"
+          required
+        />
+
+        <textarea
+          placeholder="Your message"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          className="border p-2 w-full"
+          required
+        />
+
+        <button
+          type="submit"
+          disabled={loading}
+          className="bg-black text-white px-4 py-2"
+        >
+          {loading ? "Submitting..." : "Submit"}
+        </button>
+      </form>
+    </main>
+  )
 }
