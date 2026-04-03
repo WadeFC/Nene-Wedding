@@ -435,7 +435,7 @@ export default function GuestbookPage() {
       <footer className="py-8 border-t border-border">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <p className="font-serif text-2xl text-foreground mb-2">
-            Godwin & Favour
+            Justin & Cynthia
           </p>
           <p className="text-muted-foreground text-sm">
             February 26, 2026
