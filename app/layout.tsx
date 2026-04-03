@@ -16,7 +16,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: 'Justin & Cynthia | Wedding',
+  title: 'Godwin & Favour | Wedding',
   description: 'We invite you to celebrate our wedding',
   generator: 'v0.app',
   icons: {

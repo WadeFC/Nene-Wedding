@@ -9,7 +9,7 @@ export function Footer() {
         <div className="text-center">
           {/* Couple Names */}
           <h3 className="font-serif text-3xl md:text-4xl tracking-wide mb-4">
-            Justin <span className="text-accent">&</span> Cynthia
+            Godwin <span className="text-accent">&</span> Favour
           </h3>
           
           <p className="text-card/70 mb-6">
@@ -26,7 +26,7 @@ export function Footer() {
               <Instagram className="h-5 w-5" />
             </a>
             <a
-              href="mailto:wedding@justinandcynthia.com"
+              href="mailto:wedding@GodwinandFavour.com"
               className="w-10 h-10 rounded-full bg-card/10 flex items-center justify-center hover:bg-card/20 transition-colors"
               aria-label="Email"
             >
@@ -36,7 +36,7 @@ export function Footer() {
 
           {/* Hashtag */}
           <p className="text-accent font-serif text-lg mb-8">
-            #JustinAndCynthia2026
+            #GodwinAndFavour2026
           </p>
 
           {/* Copyright */}

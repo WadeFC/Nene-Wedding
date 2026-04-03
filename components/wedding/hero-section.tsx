@@ -66,7 +66,7 @@ export function HeroSection() {
         </p>
         
         <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-card tracking-wide mb-6">
-          Justin <span className="text-accent">&</span> Cynthia
+          Godwin <span className="text-accent">&</span> Favour
         </h1>
         
         <div className="flex items-center justify-center gap-4 mb-8">
