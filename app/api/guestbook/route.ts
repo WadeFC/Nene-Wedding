@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
     if (error) {
       console.error(error)
       return NextResponse.json(
-        { error: "Database insert failed" },
+        { error: error.message },
         { status: 500 }
       )
     }

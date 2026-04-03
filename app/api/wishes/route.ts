@@ -11,7 +11,7 @@ export async function GET() {
   if (error) {
     console.error(error)
     return NextResponse.json(
-      { error: "Failed to fetch wishes" },
+      { error: error.message },
       { status: 500 }
     )
   }
@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
   if (error) {
     console.error(error)
     return NextResponse.json(
-      { error: "Database insert failed" },
+      { error: error.message },
       { status: 500 }
     )
   }
