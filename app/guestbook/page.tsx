@@ -134,7 +134,7 @@ export default function GuestbookPage() {
               <span className="text-sm font-medium">Back to Home</span>
             </Link>
             <span className="font-serif text-xl tracking-wide text-foreground">
-              J & C
+              Guddy & Nene
             </span>
           </div>
         </div>

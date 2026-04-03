@@ -54,7 +54,7 @@ export function Navigation() {
             onClick={() => scrollToSection("#home")}
             className="font-serif text-xl tracking-wide text-foreground"
           >
-            J & C
+            Guddy & Nene
           </button>
 
           {/* Desktop Navigation */}
