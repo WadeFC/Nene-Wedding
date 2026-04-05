@@ -96,14 +96,14 @@ export function HeroSection() {
           >
             RSVP Now
           </Button>
-          <Button
+          {/* <Button
             onClick={scrollToStory}
             variant="outline"
             size="lg"
             className="border-card/50 text-card hover:bg-card/10 px-8 py-6 text-sm tracking-wide"
           >
             Our Story
-          </Button>
+          </Button> */}
         </div>
       </div>
 

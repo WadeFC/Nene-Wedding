@@ -43,11 +43,13 @@ export function Navigation() {
   }
 
   return (
-    <header
+   <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-background/95 backdrop-blur-sm shadow-sm" : "bg-transparent"
-      }`}
-    >
+        isScrolled
+          ? "bg-background/95 backdrop-blur-md shadow-sm"
+            : "bg-background/80 md:bg-transparent backdrop-blur-md"
+        }`}
+      >
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <button
@@ -93,8 +95,8 @@ export function Navigation() {
         </div>
 
         {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border">
+       {isMobileMenuOpen && (
+        <div className="md:hidden py-4 border-t border-border bg-background backdrop-blur-md">
             <ul className="flex flex-col gap-4">
               {navLinks.map((link: NavLink) => (
                 <li key={link.href}>
