@@ -8,14 +8,13 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
 
-    const {
-      name,
-      attendance,
-      guestCount,
-      dietaryRestrictions,
-      message,
-    } = body
+    const name = body.name?.trim()
+    const attendance = body.attendance
+    const guestCount = body.guestCount
+    const dietaryRestrictions = body.dietaryRestrictions
+    const message = body.message
 
+    // ✅ Validation
     if (!name || !attendance) {
       return NextResponse.json(
         { error: "Name and attendance required" },
@@ -23,19 +22,20 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    // ✅ Insert RSVP
     const { data, error } = await supabase
       .from("rsvps")
       .insert([
         {
           name,
           attendance,
-          guest_count: guestCount ?? 1,
-          dietary_restrictions: dietaryRestrictions ?? null,
-          message: message ?? null,
+          guest_count: guestCount || 1,
+          dietary_restrictions:
+            dietaryRestrictions?.trim() || null,
+          message: message?.trim() || null,
         },
       ])
-      .select()
-      .single()
+      .select() // ⚠️ DO NOT USE .single()
 
     if (error) {
       console.error("SUPABASE INSERT ERROR:", error)
@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      rsvp: data,
+      rsvp: data?.[0],
     })
   } catch (err) {
     console.error("SERVER ERROR:", err)
@@ -92,12 +92,21 @@ export async function GET(request: NextRequest) {
       rsvps: data,
       stats: {
         total: data.length,
-        attending: data.filter(r => r.attendance === "attending").length,
-        not_attending: data.filter(r => r.attendance === "not-attending").length,
-        maybe: data.filter(r => r.attendance === "maybe").length,
+        attending: data.filter(
+          r => r.attendance === "attending"
+        ).length,
+        not_attending: data.filter(
+          r => r.attendance === "not-attending"
+        ).length,
+        maybe: data.filter(
+          r => r.attendance === "maybe"
+        ).length,
         total_guests: data
           .filter(r => r.attendance === "attending")
-          .reduce((sum, r) => sum + (r.guest_count || 1), 0),
+          .reduce(
+            (sum, r) => sum + (r.guest_count || 1),
+            0
+          ),
       },
     })
   } catch (err) {
