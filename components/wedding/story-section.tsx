@@ -80,24 +80,43 @@ export function StorySection() {
                 >
 
                   {/* ✅ LUXURY CARD ONLY FOR FIRST TWO */}
-                  {shouldCenter ? (
-                    <div className="relative text-center p-10 rounded-2xl backdrop-blur-md bg-white/60 dark:bg-black/40 border border-white/30 shadow-2xl max-w-lg">
+                 {shouldCenter ? (
+                      <div className="relative max-w-lg text-center group">
 
-                      {/* glow background */}
-                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-rose-200/30 via-transparent to-amber-200/30 opacity-70 pointer-events-none" />
+                        {/* Luxury Glow Background */}
+                        <div className="absolute -inset-1 rounded-3xl bg-gradient-to-br 
+                          from-[#800020]/40 via-[#d8a7b1]/30 to-[#d4af37]/40 
+                          blur-xl opacity-70 group-hover:opacity-100 transition duration-700" />
 
-                      <span className="relative block text-accent font-serif text-5xl md:text-6xl font-light mb-4">
-                        {item.year}
-                      </span>
+                        {/* Card */}
+                        <div className="relative p-12 rounded-3xl 
+                          bg-white/70 dark:bg-black/50 
+                          backdrop-blur-xl border border-white/40
+                          shadow-[0_20px_60px_rgba(0,0,0,0.15)]
+                          transition-all duration-500
+                          group-hover:-translate-y-2
+                          group-hover:shadow-[0_30px_80px_rgba(0,0,0,0.25)]">
 
-                      <h3 className="relative font-serif text-2xl md:text-3xl mb-4 tracking-wide">
-                        {item.title}
-                      </h3>
+                          {/* Gold Divider */}
+                          <div className="mx-auto mb-6 w-16 h-[2px] bg-gradient-to-r from-transparent via-[#d4af37] to-transparent" />
 
-                      <p className="relative text-muted-foreground leading-relaxed">
-                        {item.description}
-                      </p>
-                    </div>
+                          {/* Title */}
+                          <h3 className="font-serif text-3xl md:text-4xl tracking-wide text-[#800020] mb-6">
+                            {item.title}
+                          </h3>
+
+                          {/* Description */}
+                          <p className="text-muted-foreground leading-relaxed text-lg">
+                            {item.description}
+                          </p>
+
+                          {/* Bottom Accent */}
+                          <div className="mt-8 mx-auto w-10 h-10 rounded-full bg-[#d4af37]/20 flex items-center justify-center">
+                            <div className="w-2 h-2 bg-[#d4af37] rounded-full" />
+                          </div>
+
+                        </div>
+                      </div>
                   ) : (
 
                     /* ✅ PROPOSAL — UNCHANGED */
