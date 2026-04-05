@@ -14,7 +14,7 @@ const storyItems = [
     year: "Groom's Man",
     title: "Temple",
     description: "After months of texting and video calls, we finally had our first official date at a cozy Italian restaurant downtown. We knew then that something special was beginning.",
-    image:   "https://wavetrustfinance.com/assets/images/wedding/groom-man.jpeg",
+    image:   "https://wavetrustfinance.com/assets/images/wedding/groomman.jpeg",
 
   },
   {
