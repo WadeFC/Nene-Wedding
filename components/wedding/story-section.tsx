@@ -29,7 +29,7 @@ export function StorySection() {
     <section id="story" className="py-20 md:py-32 bg-background">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 
-        {/* Section Header */}
+        {/* Header */}
         <div className="text-center mb-16 md:mb-24">
           <p className="text-primary text-sm tracking-[0.3em] uppercase mb-4 font-sans">
             Our Journey
@@ -42,11 +42,10 @@ export function StorySection() {
           <div className="mt-6 mx-auto w-16 h-px bg-primary" />
         </div>
 
-        {/* Story Timeline */}
+        {/* Timeline */}
         <div className="space-y-20 md:space-y-32">
           {storyItems.map((item, index) => {
 
-            // ✅ Only first two stories should be centered
             const shouldCenter = index === 0 || index === 1
 
             return (
@@ -58,47 +57,65 @@ export function StorySection() {
                     : "md:flex-row-reverse"
                 } items-center gap-8 md:gap-16`}
               >
-                {/* Image */}
+
+                {/* IMAGE */}
                 <div className="w-full md:w-1/2">
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-lg">
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-xl shadow-xl">
                     <Image
                       src={item.image}
                       alt={item.title}
                       fill
-                      className="object-cover hover:scale-105 transition-transform duration-500"
+                      className="object-cover hover:scale-105 transition-transform duration-700"
                     />
                   </div>
                 </div>
 
-                {/* Content */}
+                {/* CONTENT */}
                 <div
                   className={`w-full md:w-1/2 ${
                     shouldCenter
-                      ? "text-center"
+                      ? "flex justify-center"
                       : "text-center md:text-left"
                   }`}
                 >
-                  <span className="inline-block text-accent font-serif text-5xl md:text-6xl font-light mb-4">
-                    {item.year}
-                  </span>
 
-                  {/* TITLE */}
-                  <h3
-                    className={`font-serif text-2xl md:text-3xl mb-4 ${
-                      shouldCenter ? "text-center" : ""
-                    }`}
-                  >
-                    {item.title}
-                  </h3>
+                  {/* ✅ LUXURY CARD ONLY FOR FIRST TWO */}
+                  {shouldCenter ? (
+                    <div className="relative text-center p-10 rounded-2xl backdrop-blur-md bg-white/60 dark:bg-black/40 border border-white/30 shadow-2xl max-w-lg">
 
-                  {/* DESCRIPTION */}
-                  <p
-                    className={`text-muted-foreground leading-relaxed ${
-                      shouldCenter ? "text-center" : ""
-                    }`}
-                  >
-                    {item.description}
-                  </p>
+                      {/* glow background */}
+                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-rose-200/30 via-transparent to-amber-200/30 opacity-70 pointer-events-none" />
+
+                      <span className="relative block text-accent font-serif text-5xl md:text-6xl font-light mb-4">
+                        {item.year}
+                      </span>
+
+                      <h3 className="relative font-serif text-2xl md:text-3xl mb-4 tracking-wide">
+                        {item.title}
+                      </h3>
+
+                      <p className="relative text-muted-foreground leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
+                  ) : (
+
+                    /* ✅ PROPOSAL — UNCHANGED */
+                    <div>
+                      <span className="inline-block text-accent font-serif text-5xl md:text-6xl font-light mb-4">
+                        {item.year}
+                      </span>
+
+                      <h3 className="font-serif text-2xl md:text-3xl mb-4">
+                        {item.title}
+                      </h3>
+
+                      <p className="text-muted-foreground leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
+                  )}
+
                 </div>
               </div>
             )
