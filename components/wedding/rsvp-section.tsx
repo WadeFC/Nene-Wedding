@@ -83,7 +83,7 @@ export function RsvpSection() {
           </h2>
           <div className="mt-6 mx-auto w-16 h-px bg-primary" />
           <p className="mt-6 text-muted-foreground max-w-xl mx-auto">
-            Please let us know by January 15, 2026 if you&apos;ll be able to join us on our special day.
+            Please let us know by March 21, 2026 if you&apos;ll be able to join us on our special day.
           </p>
         </div>
 

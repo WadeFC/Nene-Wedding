@@ -13,7 +13,7 @@ const storyItems = [
   {
     year: "Groom's Man",
     title: "Temple",
-    description: "After months of texting and video calls, we finally had our first official date at a cozy Italian restaurant downtown. We knew then that something special was beginning.",
+    description: "Wishing you both a lifetime of love, happiness, and beautiful memories together. May your journey be filled with the same support and strength you’ve always shown to those around you.",
     image:   "https://wavetrustfinance.com/assets/images/wedding/AssistGroom.jpeg",
 
   },

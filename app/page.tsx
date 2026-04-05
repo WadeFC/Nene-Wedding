@@ -7,6 +7,7 @@ import { ScheduleSection } from "@/components/wedding/schedule-section"
 import { VenueSection } from "@/components/wedding/venue-section"
 import { AccommodationsSection } from "@/components/wedding/accommodations-section"
 import { RsvpSection } from "@/components/wedding/rsvp-section"
+import { CoupleGifts } from "@/components/wedding/rsvp-section"
 import { Footer } from "@/components/wedding/footer"
 
 export default function WeddingPage() {
@@ -20,7 +21,9 @@ export default function WeddingPage() {
       <ScheduleSection />
       <VenueSection />
       <AccommodationsSection />
+
       <RsvpSection />
+      <CoupleGifts />
       <Footer />
     </main>
   )

@@ -33,11 +33,11 @@ export function VenueSection() {
           {/* Venue Details */}
           <div className="space-y-6">
             <h3 className="font-serif text-3xl md:text-4xl text-foreground">
-              Sacred heart parish centre Hal 1 Eastwood place Hanley
+              Sacred heart parish centre Hall, Hanley
             </h3>
             
             <p className="text-muted-foreground leading-relaxed">
-             We’re tying the knot at Sacred heart parish centre Hal 1 Eastwood place Hanley , a stunning venue. With sweeping views and an elegant ballroom, it’s the ultimate spot for us to celebrate with all of you
+             We’re having our Wedding Reception at Sacred heart parish centre Hall 1 , Hanley , a stunning venue. With sweeping views, it’s the ultimate spot for us to celebrate with all of you
             </p>
 
             <div className="space-y-4">
@@ -46,7 +46,7 @@ export function VenueSection() {
                 <div>
                   <p className="font-medium text-foreground">Address</p>
                   <p className="text-muted-foreground">
-                   Jasper St, Hanley, Stoke-on-Trent ST1 3DB,<br />
+                  No 1 Eastwood Place, Stoke-on-Trent ST1 3DB,<br />
                    United Kingdom
                   </p>
                 </div>
@@ -56,7 +56,7 @@ export function VenueSection() {
                 <Phone className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
                 <div>
                   <p className="font-medium text-foreground">Contact</p>
-                  <p className="text-muted-foreground">+441782215217</p>
+                  <p className="text-muted-foreground">+44 7440 759055</p>
                 </div>
               </div>
             </div>

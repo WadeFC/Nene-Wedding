@@ -13,7 +13,7 @@ export function Footer() {
           </h3>
           
           <p className="text-card/70 mb-6">
-            February 28, 2026
+            May 1, 2026
           </p>
 
           {/* Social Links */}

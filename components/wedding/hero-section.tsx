@@ -85,7 +85,7 @@ export function HeroSection() {
         </div>
 
         <p className="text-card/80 text-base md:text-lg font-light max-w-2xl mx-auto mb-10 leading-relaxed">
-          It would be our greatest honor to have you join us. Please celebrate with us as we exchange vows and begin our journey as one.
+          It would be our greatest honor to have you join us. Please celebrate with us as we begin our journey as one.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
