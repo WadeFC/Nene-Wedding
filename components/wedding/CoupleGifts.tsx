@@ -75,7 +75,7 @@ export function CoupleGifts() {
 
           <div className="mt-6 mx-auto w-16 h-px bg-primary" />
           <p className="mt-6 text-muted-foreground max-w-xl mx-auto">
-            Please let us know by March 21, 2026 if you'll be able to join us on our special day.
+            Please let us know by April 21, 2026 if you'll be able to join us on our special day.
           </p>
         </div>
       </div>
