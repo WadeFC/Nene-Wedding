@@ -7,19 +7,22 @@ const storyItems = [
     year: "2018",
     title: "How We Met",
     description: "We first crossed paths at a mutual friend's birthday party. What started as a casual conversation turned into hours of talking and laughing together.",
-    image: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=800",
+    image:"https://wavetrustfinance.com/assets/images/wedding/gallery4.jpeg",
+
   },
   {
     year: "2020",
     title: "The First Date",
     description: "After months of texting and video calls, we finally had our first official date at a cozy Italian restaurant downtown. We knew then that something special was beginning.",
-    image: "https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?q=80&w=800",
+    image:   "https://wavetrustfinance.com/assets/images/wedding/gallery3.jpeg",
+
   },
   {
     year: "2024",
     title: "The Proposal",
     description: "On a beautiful sunset evening at our favorite beach, surrounded by the gentle sound of waves, the big question was asked. Through happy tears, the answer was yes!",
-    image: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=800",
+    image:   "https://wavetrustfinance.com/assets/images/wedding/gallery5.jpeg",
+
   },
 ]
 
