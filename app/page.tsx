@@ -1,6 +1,7 @@
 import { Navigation } from "@/components/wedding/navigation"
 import { HeroSection } from "@/components/wedding/hero-section"
 import { StorySection } from "@/components/wedding/story-section"
+import { StorySectionTales } from "@/components/wedding/story-section-tales"
 import { GallerySection } from "@/components/wedding/gallery-section"
 import { ScheduleSection } from "@/components/wedding/schedule-section"
 import { VenueSection } from "@/components/wedding/venue-section"
