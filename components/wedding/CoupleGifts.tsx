@@ -39,7 +39,7 @@ export function CoupleGifts() {
           </a>
           </h2>
 
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light text-foreground tracking-wide mt-8">
+          <h3 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light text-foreground tracking-wide mt-8">
             Revolut-Pounds
           </h3>
             <h2 className="text-primary text-sm tracking-[0.3em] uppercase mb-4 font-sans">
