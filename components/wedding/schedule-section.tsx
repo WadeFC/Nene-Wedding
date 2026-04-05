@@ -49,14 +49,14 @@ export function ScheduleSection() {
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-24">
           <p className="text-primary text-sm tracking-[0.3em] uppercase mb-4 font-sans">
-            The Big Day
+            The Wedding Date
           </p>
           <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light text-foreground tracking-wide">
             Schedule
           </h2>
           <div className="mt-6 mx-auto w-16 h-px bg-primary" />
           <p className="mt-6 text-muted-foreground max-w-2xl mx-auto">
-            Saturday, February 28, 2026
+            Friday, 1 May, 2026
           </p>
         </div>
 

@@ -36,7 +36,7 @@ export function Footer() {
 
           {/* Hashtag */}
           <p className="text-accent font-serif text-lg mb-8">
-            #GodwinAndFavour2026
+            #Godwin'sFavouredd2026
           </p>
 
           {/* Copyright */}

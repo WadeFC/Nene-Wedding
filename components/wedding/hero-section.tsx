@@ -79,7 +79,7 @@ export function HeroSection() {
         <div className="flex items-center justify-center gap-4 mb-8">
           <div className="h-px w-12 bg-secondary/50" />
           <p className="text-card/90 text-lg md:text-xl font-serif tracking-wide">
-            Saturday, February 28, 2026
+            Friday, 1 May, 2026
           </p>
           <div className="h-px w-12 bg-secondary/50" />
         </div>
