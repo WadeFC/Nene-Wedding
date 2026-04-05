@@ -1,4 +1,3 @@
-console.log("ADMIN PASSWORD:", process.env.ADMIN_PASSWORD)
 import { NextRequest, NextResponse } from "next/server"
 import { supabase } from "@/lib/supabase"
 
@@ -18,6 +17,7 @@ export async function POST(request: NextRequest) {
       message,
     } = body
 
+    // Validation
     if (!name || !attendance) {
       return NextResponse.json(
         { error: "Name and attendance required" },
@@ -25,31 +25,39 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const { error } = await supabase.from("rsvps").insert([
-      {
-        name,
-        email,
-        attendance,
-        guest_count: guestCount || 1,
-        dietary_restrictions: dietaryRestrictions,
-        message,
-      },
-    ])
+    // ✅ Insert RSVP (IMPORTANT FIX)
+    const { data, error } = await supabase
+      .from("rsvps")
+      .insert([
+        {
+          name,
+          email,
+          attendance,
+          guest_count: guestCount || 1,
+          dietary_restrictions: dietaryRestrictions || null,
+          message: message || null,
+        },
+      ])
+      .select()
+      .single()
 
+    // ✅ Real error handling
     if (error) {
-      console.error(error)
+      console.error("SUPABASE INSERT ERROR:", error)
+
       return NextResponse.json(
-        { error: "Failed to save RSVP" },
+        { error: error.message },
         { status: 500 }
       )
     }
 
     return NextResponse.json({
       success: true,
-      message: "RSVP submitted successfully",
+      rsvp: data,
     })
-  } catch (error) {
-    console.error(error)
+  } catch (err) {
+    console.error("SERVER ERROR:", err)
+
     return NextResponse.json(
       { error: "Server error" },
       { status: 500 }
@@ -61,38 +69,48 @@ export async function POST(request: NextRequest) {
 // ADMIN GET RSVPS
 // ======================
 export async function GET(request: NextRequest) {
-  const authHeader = request.headers.get("authorization")
+  try {
+    const authHeader = request.headers.get("authorization")
 
-  if (authHeader !== `Bearer ${process.env.ADMIN_PASSWORD}`) {
+    if (authHeader !== `Bearer ${process.env.ADMIN_PASSWORD}`) {
+      return NextResponse.json(
+        { error: "Unauthorized" },
+        { status: 401 }
+      )
+    }
+
+    const { data, error } = await supabase
+      .from("rsvps")
+      .select("*")
+      .order("created_at", { ascending: false })
+
+    if (error) {
+      console.error("FETCH RSVP ERROR:", error)
+
+      return NextResponse.json(
+        { error: error.message },
+        { status: 500 }
+      )
+    }
+
+    return NextResponse.json({
+      rsvps: data,
+      stats: {
+        total: data.length,
+        attending: data.filter(r => r.attendance === "attending").length,
+        not_attending: data.filter(r => r.attendance === "not-attending").length,
+        maybe: data.filter(r => r.attendance === "maybe").length,
+        total_guests: data
+          .filter(r => r.attendance === "attending")
+          .reduce((sum, r) => sum + (r.guest_count || 1), 0),
+      },
+    })
+  } catch (err) {
+    console.error("ADMIN FETCH ERROR:", err)
+
     return NextResponse.json(
-      { error: "Unauthorized" },
-      { status: 401 }
-    )
-  }
-
-  const { data, error } = await supabase
-    .from("rsvps")
-    .select("*")
-    .order("created_at", { ascending: false })
-
-  if (error) {
-    console.error(error)
-    return NextResponse.json(
-      { error: "Failed to fetch RSVPs" },
+      { error: "Server error" },
       { status: 500 }
     )
   }
-
-  return NextResponse.json({
-    rsvps: data,
-    stats: {
-      total: data.length,
-      attending: data.filter(r => r.attendance === "attending").length,
-      not_attending: data.filter(r => r.attendance === "not-attending").length,
-      maybe: data.filter(r => r.attendance === "maybe").length,
-      total_guests: data
-        .filter(r => r.attendance === "attending")
-        .reduce((sum, r) => sum + (r.guest_count || 1), 0),
-    },
-  })
 }
