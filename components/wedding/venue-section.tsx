@@ -23,7 +23,7 @@ export function VenueSection() {
           {/* Venue Image */}
           <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-xl">
             <Image
-              src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=1200"
+              src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwepx89xUsT8be5QuPNC0b-JcUOl7fR1gV64W9w1se3qR2G7zZUckQg833Z6YggRLAPFAGwhYPGBhdsSO4SsAUOFHWSC0pkZb3bz5NCZUQYPHDAKUImRls9sp0StO9YPFpyFDm3wIEQ=w408-h306-k-no"
               alt="Wedding Venue"
               fill
               className="object-cover"
@@ -33,13 +33,11 @@ export function VenueSection() {
           {/* Venue Details */}
           <div className="space-y-6">
             <h3 className="font-serif text-3xl md:text-4xl text-foreground">
-              The Grand Estate
+              Sacred heart parish centre Hal 1 Eastwood place Hanley
             </h3>
             
             <p className="text-muted-foreground leading-relaxed">
-              Nestled in the heart of wine country, The Grand Estate offers a breathtaking backdrop 
-              for our special day. With its elegant ballroom, beautiful gardens, and stunning views, 
-              it&apos;s the perfect place to celebrate love.
+             We’re tying the knot at Sacred heart parish centre Hal 1 Eastwood place Hanley , a stunning venue. With sweeping views and an elegant ballroom, it’s the ultimate spot for us to celebrate with all of you
             </p>
 
             <div className="space-y-4">
@@ -48,8 +46,8 @@ export function VenueSection() {
                 <div>
                   <p className="font-medium text-foreground">Address</p>
                   <p className="text-muted-foreground">
-                    1234 Vineyard Lane<br />
-                    Napa Valley, CA 94558
+                   Jasper St, Hanley, Stoke-on-Trent ST1 3DB,<br />
+                   United Kingdom
                   </p>
                 </div>
               </div>
@@ -58,7 +56,7 @@ export function VenueSection() {
                 <Phone className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
                 <div>
                   <p className="font-medium text-foreground">Contact</p>
-                  <p className="text-muted-foreground">(707) 555-0123</p>
+                  <p className="text-muted-foreground">+441782215217</p>
                 </div>
               </div>
             </div>
@@ -69,7 +67,7 @@ export function VenueSection() {
                 className="bg-primary hover:bg-primary/90 text-primary-foreground"
               >
                 <a 
-                  href="https://maps.google.com" 
+                  href="https://maps.app.goo.gl/7xYSqrU2JTnoXzFc8" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2"

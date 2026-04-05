@@ -14,14 +14,14 @@ const storyItems = [
     year: "Groom's Man",
     title: "Temple",
     description: "After months of texting and video calls, we finally had our first official date at a cozy Italian restaurant downtown. We knew then that something special was beginning.",
-    image:   "https://wavetrustfinance.com/assets/images/wedding/gallery3.jpeg",
+    image:   "https://wavetrustfinance.com/assets/images/wedding/groom-man.jpeg",
 
   },
   {
     year: "Bride's Maid",
     title: "Bukola",
     description: "May your love grow stronger with each passing day and your hearts always find their way back to each other.Wishing you endless happiness, deep companionship, and a lifetime of shared dreams. 💖",
-    image:   "https://wavetrustfinance.com/assets/images/wedding/gallery5.jpeg",
+    image:   "https://wavetrustfinance.com/assets/images/wedding/bride-maid.jpeg",
 
   },
 ]
