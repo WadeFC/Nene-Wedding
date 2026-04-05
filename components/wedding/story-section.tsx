@@ -67,7 +67,7 @@ export function StorySection() {
                 <span className="inline-block text-accent font-serif text-5xl md:text-6xl font-light mb-4">
                   {item.year}
                 </span>
-                <h3 className="font-serif text-2xl md:text-3xl text-foreground mb-4">
+                <h3 className="font-serif text-2xl md:text-3xl text-center mb-4" style={{ textAlign: 'center' }}>
                   {item.title}
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">
