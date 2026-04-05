@@ -4,21 +4,21 @@ import Image from "next/image"
 
 const storyItems = [
   {
-    year: "2018",
+    year: "",
     title: "How We Met",
-    description: "We first crossed paths at a mutual friend's birthday party. What started as a casual conversation turned into hours of talking and laughing together.",
+    description: "",
     image:"https://wavetrustfinance.com/assets/images/wedding/gallery4.jpeg",
 
   },
   {
-    year: "2020",
+    year: "",
     title: "The First Date",
-    description: "After months of texting and video calls, we finally had our first official date at a cozy Italian restaurant downtown. We knew then that something special was beginning.",
+    description: "",
     image:   "https://wavetrustfinance.com/assets/images/wedding/gallery3.jpeg",
 
   },
   {
-    year: "2024",
+    year: "",
     title: "The Proposal",
     description: "On a beautiful sunset evening at our favorite beach, surrounded by the gentle sound of waves, the big question was asked. Through happy tears, the answer was yes!",
     image:   "https://wavetrustfinance.com/assets/images/wedding/gallery5.jpeg",
