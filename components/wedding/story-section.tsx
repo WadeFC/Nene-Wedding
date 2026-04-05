@@ -6,7 +6,7 @@ const storyItems = [
   {
     year: "",
     title: "How We Met",
-    description: "",
+    description: "We crossed paths at a mutual friend’s online show and what started like a check up conversation turned into endless conversations and laughter",
     image: "https://wavetrustfinance.com/assets/images/wedding/gallery4.jpeg",
   },
   {
@@ -19,7 +19,7 @@ const storyItems = [
     year: "",
     title: "The Proposal",
     description:
-      "We crossed paths at a mutual friend’s online show and what started like a check up conversation turned into endless conversations and laughter",
+      "On a beautiful sunset evening at our favorite beach, surrounded by the gentle sound of waves, the big question was asked. Through happy tears, the answer was yes!",
     image: "https://wavetrustfinance.com/assets/images/wedding/gallery5.jpeg",
   },
 ]
@@ -44,10 +44,9 @@ export function StorySection() {
 
         {/* Timeline */}
         <div className="space-y-20 md:space-y-32">
-                {storyItems.map((item, index) => {
+          {storyItems.map((item, index) => {
 
-            // ✅ ONLY "How We Met" uses luxury card
-            const shouldCenter = index === 0
+            const shouldCenter = index === 0 || index === 1
 
             return (
               <div
@@ -58,6 +57,7 @@ export function StorySection() {
                     : "md:flex-row-reverse"
                 } items-center gap-8 md:gap-16`}
               >
+
                 {/* IMAGE */}
                 <div className="w-full md:w-1/2">
                   <div className="relative aspect-[4/3] overflow-hidden rounded-xl shadow-xl">
