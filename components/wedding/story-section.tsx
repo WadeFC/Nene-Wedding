@@ -19,7 +19,7 @@ const storyItems = [
     year: "",
     title: "The Proposal",
     description:
-      "On a beautiful sunset evening at our favorite beach, surrounded by the gentle sound of waves, the big question was asked. Through happy tears, the answer was yes!",
+      "On a beautiful sunset evening at our car lot, surrounded by the gentle breeze and breathe-taking ambience, the big question was asked. Through happy smiles and giggles, the answer was Bold yes!",
     image: "https://wavetrustfinance.com/assets/images/wedding/gallery5.jpeg",
   },
 ]
