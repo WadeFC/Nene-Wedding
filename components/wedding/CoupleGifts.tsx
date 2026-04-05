@@ -25,7 +25,7 @@ export function CoupleGifts() {
             Gifts and Presents
           </h2>
 
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light text-foreground tracking-wide">
+          <h3 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light text-foreground tracking-wide">
             Amazon Wedding List
           </h3>
           <h2>
