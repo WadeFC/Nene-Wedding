@@ -28,7 +28,7 @@ export function CoupleGifts() {
           <h3 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light text-foreground tracking-wide">
             Amazon Wedding List
           </h3>
-          <h2>
+
           <a
             href="https://www.amazon.co.uk/wedding/share/GodsFavour"
             target="_blank"
@@ -37,13 +37,13 @@ export function CoupleGifts() {
           >
             Visit Amazon List
           </a>
-          </h2>
 
           <h3 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light text-foreground tracking-wide mt-8">
             Revolut-Pounds
           </h3>
+
             <h2 className="text-primary text-sm tracking-[0.3em] uppercase mb-4 font-sans">
-         Chijindu Favour
+              Chijindu Favour
           </h2>
 
 
