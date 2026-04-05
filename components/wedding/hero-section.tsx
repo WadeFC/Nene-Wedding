@@ -5,11 +5,18 @@ import { ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const backgroundImages = [
-  "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070",
-  "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069",
-  "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?q=80&w=2070",
-  "https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2070",
-  "https://images.unsplash.com/photo-1529636798458-92182e662485?q=80&w=2069",
+
+  "https://wavetrustfinance.com/assets/images/wedding/gallery1.jpeg",
+  "https://wavetrustfinance.com/assets/images/wedding/gallery2.jpeg",
+  "https://wavetrustfinance.com/assets/images/wedding/gallery5.jpeg",
+  "https://wavetrustfinance.com/assets/images/wedding/gallery4.jpeg",
+  "https://wavetrustfinance.com/assets/images/wedding/gallery5.jpeg",
+  "https://wavetrustfinance.com/assets/images/wedding/gallery6.jpeg",
+  "https://wavetrustfinance.com/assets/images/wedding/gallery7.jpeg",
+  "https://wavetrustfinance.com/assets/images/wedding/gallery8.jpeg",
+
+
+  
 ]
 
 export function HeroSection() {
