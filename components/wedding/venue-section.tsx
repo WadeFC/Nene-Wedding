@@ -82,13 +82,13 @@ export function VenueSection() {
                 className="border-primary text-primary hover:bg-primary/10"
               >
                 <a 
-                  href="#" 
+                  href="https://maps.app.goo.gl/EfwFCAEiECEL73EWA?g_st=ic" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2"
                 >
                   <ExternalLink className="h-4 w-4" />
-                  View Venue Website
+                  Locate of venue from Railway station
                 </a>
               </Button>
             </div>

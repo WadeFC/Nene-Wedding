@@ -14,9 +14,9 @@ export default function WeddingPage() {
     <main className="min-h-screen">
       <Navigation />
       <HeroSection />
-      <StorySectionTales/>
+      <StorySection/>
       <GallerySection />
-      <StorySection />
+      <StorySectionTales />
       <ScheduleSection />
       <VenueSection />
       <AccommodationsSection />
